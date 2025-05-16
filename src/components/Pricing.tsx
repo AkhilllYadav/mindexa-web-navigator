@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
+import { Check } from 'lucide-react';
 
 interface PricingPlanProps {
   title: string;
@@ -43,9 +44,7 @@ const PricingPlan = ({
         <ul className="space-y-3">
           {features.map((feature, index) => (
             <li key={index} className="flex items-center">
-              <svg className="w-5 h-5 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-              </svg>
+              <Check className="w-5 h-5 mr-2 text-green-500" />
               {feature}
             </li>
           ))}
@@ -65,14 +64,17 @@ const Pricing = () => {
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Pick the plan that fits your skill up</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Pick the plan that fits your needs</h2>
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+            We offer flexible pricing options to accommodate businesses of all sizes
+          </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           <PricingPlan
-            title="Standard Plan"
-            price="$2500"
-            description="Perfect for small businesses just getting started with AI"
+            title="Starter"
+            price="$40"
+            description="Perfect for small businesses just getting started"
             features={[
               "AI Consultation",
               "Basic Automation",
@@ -82,25 +84,40 @@ const Pricing = () => {
             ]}
             buttonText="Get Started"
             buttonVariant="outline"
-            className="bg-mindexa-yellow/10"
           />
           
           <PricingPlan
-            title="Enterprise Plan"
-            price="$5000"
-            description="Complete solution for businesses ready to fully embrace AI"
+            title="Professional"
+            price="$15"
+            description="Ideal for growing businesses with specific needs"
             features={[
-              "Everything in Standard",
+              "Everything in Starter",
               "Advanced AI Integration",
               "Custom ML Models",
-              "Unlimited Solutions",
-              "24/7 Priority Support",
-              "Dedicated AI Consultant"
+              "3 Custom Solutions",
+              "Priority Support",
+              "Quarterly Strategy Reviews"
             ]}
             isPopular={true}
-            buttonText="Contact Us"
+            buttonText="Choose Plan"
             buttonVariant="default"
-            className="bg-mindexa-purple text-white"
+            className="border-mindexa-purple"
+          />
+          
+          <PricingPlan
+            title="Enterprise"
+            price="$12"
+            description="Complete solution for businesses ready to fully embrace AI"
+            features={[
+              "Everything in Professional",
+              "Full AI Ecosystem",
+              "Unlimited Solutions",
+              "24/7 Premium Support",
+              "Dedicated AI Consultant",
+              "Monthly Strategy Reviews"
+            ]}
+            buttonText="Contact Us"
+            buttonVariant="outline"
           />
         </div>
       </div>

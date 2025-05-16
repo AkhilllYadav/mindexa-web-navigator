@@ -12,32 +12,29 @@ const Hero = () => {
           </h1>
           <p className="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
             Crafting exceptional, well-engineered & technology
-            driven strategies to drive impactful results with
+            driven strategies to drive impactful results
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Button size="lg" className="bg-mindexa-purple hover:bg-mindexa-indigo text-white px-8 py-6">
-              Explore Solutions
+              Get a Demo
             </Button>
-            <div className="flex">
-              <span className="w-3 h-3 rounded-full bg-mindexa-blue mx-1"></span>
-              <span className="w-3 h-3 rounded-full bg-mindexa-indigo mx-1"></span>
-              <span className="w-3 h-3 rounded-full bg-mindexa-purple mx-1"></span>
-              <span className="w-3 h-3 rounded-full bg-mindexa-pink mx-1"></span>
-            </div>
+            <Button variant="outline" size="lg" className="px-8 py-6">
+              Our Services
+            </Button>
           </div>
 
           <div className="grid grid-cols-3 md:grid-cols-3 gap-8 justify-center items-center">
             <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-mindexa-blue">+40</p>
-              <p className="text-gray-600">Happy Clients</p>
+              <p className="text-3xl md:text-4xl font-bold text-mindexa-blue">$40K+</p>
+              <p className="text-gray-600">Average ROI</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-mindexa-purple">+15</p>
-              <p className="text-gray-600">Team Members</p>
+              <p className="text-3xl md:text-4xl font-bold text-mindexa-purple">15+</p>
+              <p className="text-gray-600">Expert Team</p>
             </div>
             <div className="text-center">
-              <p className="text-3xl md:text-4xl font-bold text-mindexa-indigo">+12</p>
+              <p className="text-3xl md:text-4xl font-bold text-mindexa-indigo">12+</p>
               <p className="text-gray-600">Years Experience</p>
             </div>
           </div>

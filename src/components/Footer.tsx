@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Button } from '@/components/ui/button';
 
 const Footer = () => {
   return (
@@ -15,9 +16,9 @@ const Footer = () => {
             <p className="text-white/90 mb-8">
               Ready to transform your business with AI-powered solutions? Get in touch with our team today.
             </p>
-            <button className="bg-white text-mindexa-purple hover:bg-gray-100 px-8 py-3 rounded-md font-medium">
+            <Button className="bg-white text-mindexa-purple hover:bg-gray-100">
               Contact Us
-            </button>
+            </Button>
           </div>
         </div>
 
