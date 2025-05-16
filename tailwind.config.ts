@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -52,6 +53,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				mindexa: {
+					blue: '#4169E1',
+					indigo: '#5F4B8B',
+					purple: '#8A2BE2',
+					pink: '#FF69B4',
+					orange: '#FFA500',
+					yellow: '#FFD700',
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -84,11 +93,26 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'fade-in': {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' }
+				},
+				'fade-up': {
+					'0%': { opacity: '0', transform: 'translateY(20px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.5s ease-out',
+				'fade-up': 'fade-up 0.7s ease-out'
+			},
+			backgroundImage: {
+				'gradient-hero': 'linear-gradient(135deg, #D4F1F9 0%, #FFF5E0 100%)',
+				'gradient-blue': 'linear-gradient(135deg, #3B82F6 0%, #2563EB 100%)',
+				'gradient-purple': 'linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%)'
 			}
 		}
 	},
