@@ -15,9 +15,12 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <a href="/" className="text-2xl font-bold text-gray-900">
-              <span className="text-mindexa-blue">Mind</span>
-              <span className="text-mindexa-purple">exa</span>
+            <a href="/" className="flex items-center">
+              <img 
+                src="/lovable-uploads/e469623c-9926-493b-9978-9ff0be2be4c0.png" 
+                alt="Mindexa Logo" 
+                className="h-10 mr-2" 
+              />
             </a>
           </div>
 
@@ -44,7 +47,10 @@ const Header = () => {
           </nav>
 
           <div className="hidden md:block">
-            <Button className="bg-gradient-to-r from-mindexa-blue to-mindexa-indigo text-white">
+            <Button 
+              className="bg-gradient-to-r from-mindexa-blue to-mindexa-indigo text-white"
+              onClick={() => window.open("https://tally.so/r/3xBQvr", "_blank")}
+            >
               Contact Us
             </Button>
           </div>
@@ -88,7 +94,10 @@ const Header = () => {
               <a href="/blog" className="text-gray-600 hover:text-gray-900 font-medium">
                 Blog
               </a>
-              <Button className="bg-gradient-to-r from-mindexa-blue to-mindexa-indigo text-white w-full">
+              <Button 
+                className="bg-gradient-to-r from-mindexa-blue to-mindexa-indigo text-white w-full"
+                onClick={() => window.open("https://tally.so/r/3xBQvr", "_blank")}
+              >
                 Contact Us
               </Button>
             </div>

@@ -1,8 +1,5 @@
 
 import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
@@ -25,6 +22,29 @@ const Contact = () => {
       answer: "Yes, our solutions are designed to integrate seamlessly with your existing tech stack. We'll conduct a thorough assessment before implementation to ensure compatibility."
     }
   ];
+
+  React.useEffect(() => {
+    // Initialize Tally form
+    const script = document.createElement('script');
+    script.src = "https://tally.so/widgets/embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+    
+    script.onload = () => {
+      if (typeof window.Tally !== 'undefined') {
+        window.Tally.loadEmbeds();
+      } else {
+        document.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((e) => {
+          e.src = e.dataset.tallySrc;
+        });
+      }
+    };
+    
+    return () => {
+      // Clean up
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <section className="py-16 md:py-24 bg-gray-50">
@@ -53,42 +73,20 @@ const Contact = () => {
             </Accordion>
           </div>
 
-          {/* Contact Form */}
+          {/* Contact Form - Tally.so Embed */}
           <div>
             <Card>
               <CardContent className="p-6">
-                <h3 className="text-xl font-bold mb-4">Send us a message</h3>
-                <form className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label htmlFor="name" className="block mb-1 text-sm font-medium">
-                        Your Name
-                      </label>
-                      <Input id="name" placeholder="John Doe" />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block mb-1 text-sm font-medium">
-                        Email Address
-                      </label>
-                      <Input id="email" placeholder="john@example.com" type="email" />
-                    </div>
-                  </div>
-                  <div>
-                    <label htmlFor="subject" className="block mb-1 text-sm font-medium">
-                      Subject
-                    </label>
-                    <Input id="subject" placeholder="How can we help you?" />
-                  </div>
-                  <div>
-                    <label htmlFor="message" className="block mb-1 text-sm font-medium">
-                      Message
-                    </label>
-                    <Textarea id="message" placeholder="Tell us about your project..." rows={5} />
-                  </div>
-                  <Button className="w-full bg-gradient-to-r from-mindexa-blue to-mindexa-purple text-white">
-                    Send Message
-                  </Button>
-                </form>
+                <iframe 
+                  data-tally-src="https://tally.so/embed/3xBQvr?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+                  loading="lazy" 
+                  width="100%" 
+                  height="927" 
+                  frameBorder="0" 
+                  marginHeight="0" 
+                  marginWidth="0" 
+                  title="Contact form"
+                ></iframe>
               </CardContent>
             </Card>
           </div>

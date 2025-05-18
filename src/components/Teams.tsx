@@ -35,6 +35,7 @@ const TeamDepartment = ({ name, description, icon, color, bgColor }) => {
         <Button 
           size="sm" 
           className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-mindexa-blue to-mindexa-purple text-white hover:opacity-90"
+          onClick={() => window.open("https://tally.so/r/3xBQvr", "_blank")}
         >
           <Calendar className="h-4 w-4" /> 
           Schedule Meeting
