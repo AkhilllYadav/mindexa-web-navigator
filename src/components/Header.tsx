@@ -52,6 +52,7 @@ const Header = () => {
     { id: 'teams', label: 'Teams' },
     { id: 'case-studies', label: 'Case Studies' },
     { id: 'testimonials', label: 'Testimonials' },
+    { id: 'contact', label: 'Contact' },
   ];
 
   return (

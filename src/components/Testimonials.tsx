@@ -12,7 +12,7 @@ import {
 
 const YouTubeEmbed = ({ videoId }: { videoId: string }) => {
   return (
-    <AspectRatio ratio={16 / 9} className="overflow-hidden rounded-lg">
+    <AspectRatio ratio={9 / 16} className="overflow-hidden rounded-lg">
       <iframe
         src={`https://www.youtube.com/embed/${videoId}`}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
