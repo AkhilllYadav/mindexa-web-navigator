@@ -3,6 +3,15 @@ import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
+// Declare the global Tally object to fix TypeScript errors
+declare global {
+  interface Window {
+    Tally?: {
+      loadEmbeds: () => void;
+    }
+  }
+}
+
 const Contact = () => {
   const faqs = [
     {
@@ -31,11 +40,15 @@ const Contact = () => {
     document.body.appendChild(script);
     
     script.onload = () => {
-      if (typeof window.Tally !== 'undefined') {
+      if (window.Tally !== undefined) {
         window.Tally.loadEmbeds();
       } else {
+        // Use type assertion to safely access properties
         document.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((e) => {
-          e.src = e.dataset.tallySrc;
+          const iframe = e as HTMLIFrameElement;
+          if (iframe.dataset.tallySrc) {
+            iframe.src = iframe.dataset.tallySrc;
+          }
         });
       }
     };
@@ -81,10 +94,8 @@ const Contact = () => {
                   data-tally-src="https://tally.so/embed/3xBQvr?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
                   loading="lazy" 
                   width="100%" 
-                  height="927" 
+                  height={927} 
                   frameBorder="0" 
-                  marginHeight="0" 
-                  marginWidth="0" 
                   title="Contact form"
                 ></iframe>
               </CardContent>
