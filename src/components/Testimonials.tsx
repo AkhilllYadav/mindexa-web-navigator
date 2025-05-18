@@ -9,6 +9,7 @@ import {
   CarouselNext,
   CarouselPrevious
 } from '@/components/ui/carousel';
+import { motion } from 'framer-motion';
 
 const YouTubeEmbed = ({ videoId }: { videoId: string }) => {
   return (
@@ -49,25 +50,42 @@ const Testimonials = () => {
   return (
     <section id="testimonials" className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-mindexa-blue to-mindexa-purple bg-clip-text text-transparent">
             What our satisfied customers are saying about us
           </h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-8">
             Hear directly from our clients about their experience working with Mindexa
           </p>
-        </div>
+        </motion.div>
 
         {/* Main Testimonial Carousel */}
-        <div className="max-w-5xl mx-auto px-10">
+        <motion.div 
+          className="max-w-5xl mx-auto px-10"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           <Carousel className="w-full">
             <CarouselContent>
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="md:basis-full">
-                  <Card className="bg-white border-none shadow-sm">
+                  <Card className="bg-white border-none shadow-sm hover:shadow-md transition-all duration-300">
                     <CardContent className="p-6">
                       <YouTubeEmbed videoId={testimonial.videoId} />
-                      <div className="mt-4">
+                      <motion.div 
+                        className="mt-4"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.3 }}
+                      >
                         <p className="text-gray-700 text-lg italic">
                           "{testimonial.quote}"
                         </p>
@@ -75,7 +93,7 @@ const Testimonials = () => {
                           <p className="font-semibold">{testimonial.name}</p>
                           <p className="text-gray-500">{testimonial.role}</p>
                         </div>
-                      </div>
+                      </motion.div>
                     </CardContent>
                   </Card>
                 </CarouselItem>
@@ -84,21 +102,35 @@ const Testimonials = () => {
             <CarouselPrevious className="lg:-left-12" />
             <CarouselNext className="lg:-right-12" />
           </Carousel>
-        </div>
+        </motion.div>
         
         {/* Stat Card */}
-        <div className="mt-12">
-          <Card className="bg-mindexa-yellow/10 border-none max-w-md mx-auto">
+        <motion.div 
+          className="mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          <Card className="bg-mindexa-yellow/10 border-none max-w-md mx-auto hover:shadow-lg transition-all duration-300">
             <CardContent className="p-6 flex flex-col items-center justify-center">
               <div className="text-center">
-                <p className="text-5xl font-bold text-mindexa-orange mb-2">91%</p>
+                <motion.p 
+                  className="text-5xl font-bold text-mindexa-orange mb-2"
+                  initial={{ scale: 0.8 }}
+                  whileInView={{ scale: 1 }}
+                  transition={{ type: "spring", stiffness: 200, damping: 10, delay: 0.5 }}
+                  viewport={{ once: true }}
+                >
+                  91%
+                </motion.p>
                 <p className="text-gray-700">
                   of our clients report exceeding their expected ROI within the first year
                 </p>
               </div>
             </CardContent>
           </Card>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

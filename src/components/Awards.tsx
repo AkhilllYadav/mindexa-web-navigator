@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
+import { motion } from 'framer-motion';
 
 const Awards = () => {
   const awards = [
@@ -30,26 +31,61 @@ const Awards = () => {
     }
   ];
 
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.1,
+        duration: 0.5
+      }
+    })
+  };
+
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Awards & Recognition</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
             Our commitment to excellence and innovation has been recognized by leading industry organizations.
           </p>
-        </div>
+        </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {awards.map((award, index) => (
-            <Card key={index} className="border-none shadow-md hover:shadow-lg transition-all">
-              <CardContent className="p-6 flex flex-col items-center text-center">
-                <div className="text-4xl mb-4">{award.icon}</div>
-                <h3 className="font-bold text-xl mb-2">{award.title}</h3>
-                <p className="text-mindexa-purple font-semibold mb-1">{award.year}</p>
-                <p className="text-gray-600 text-sm">{award.organization}</p>
-              </CardContent>
-            </Card>
+            <motion.div
+              key={index}
+              custom={index}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Card className="border-none shadow-md hover:shadow-lg transition-all h-full">
+                <CardContent className="p-6 flex flex-col items-center text-center">
+                  <motion.div 
+                    className="text-4xl mb-4"
+                    whileHover={{ rotate: [0, -10, 10, -10, 10, 0], scale: 1.2 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    {award.icon}
+                  </motion.div>
+                  <h3 className="font-bold text-xl mb-2">{award.title}</h3>
+                  <p className="text-mindexa-purple font-semibold mb-1">{award.year}</p>
+                  <p className="text-gray-600 text-sm">{award.organization}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
       </div>

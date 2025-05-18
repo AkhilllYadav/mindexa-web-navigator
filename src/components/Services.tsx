@@ -2,25 +2,39 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Briefcase, Brain, BarChart3, Code, RefreshCw, Cloud } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface ServiceCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
   color: string;
+  index: number;
 }
 
-const ServiceCard = ({ title, description, icon, color }: ServiceCardProps) => {
+const ServiceCard = ({ title, description, icon, color, index }: ServiceCardProps) => {
   return (
-    <Card className="border-none shadow-md hover:shadow-xl transition-all duration-300">
-      <CardContent className="p-6 flex flex-col items-center text-center">
-        <div className={`w-16 h-16 flex items-center justify-center rounded-full mb-6 ${color}`}>
-          {icon}
-        </div>
-        <h3 className="text-xl font-bold mb-3">{title}</h3>
-        <p className="text-gray-600">{description}</p>
-      </CardContent>
-    </Card>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      whileHover={{ y: -10, transition: { duration: 0.3 } }}
+      viewport={{ once: true }}
+    >
+      <Card className="border-none shadow-md hover:shadow-xl transition-all duration-300">
+        <CardContent className="p-6 flex flex-col items-center text-center">
+          <motion.div 
+            className={`w-16 h-16 flex items-center justify-center rounded-full mb-6 ${color}`}
+            whileHover={{ scale: 1.1 }}
+            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          >
+            {icon}
+          </motion.div>
+          <h3 className="text-xl font-bold mb-3">{title}</h3>
+          <p className="text-gray-600">{description}</p>
+        </CardContent>
+      </Card>
+    </motion.div>
   );
 };
 
@@ -67,12 +81,18 @@ const Services = () => {
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <motion.div 
+          className="text-center mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: true }}
+        >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Core Services</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
             We offer a comprehensive range of AI and technology services to help your business innovate and grow.
           </p>
-        </div>
+        </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <ServiceCard
@@ -81,6 +101,7 @@ const Services = () => {
               description={service.description}
               icon={service.icon}
               color={service.color}
+              index={index}
             />
           ))}
         </div>
