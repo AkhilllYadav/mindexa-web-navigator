@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const Hero = () => {
@@ -28,7 +28,7 @@ const Hero = () => {
           </motion.p>
           
           <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+            className="flex justify-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
@@ -47,20 +47,6 @@ const Hero = () => {
                 <ArrowRight className="ml-1" />
               </motion.span>
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="px-8 py-6 group hover:bg-gray-100 transition-colors"
-              onClick={() => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")}
-            >
-              <motion.span
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="inline-flex items-center"
-              >
-                <Play className="mr-1" /> Watch Demo
-              </motion.span>
-            </Button>
           </motion.div>
 
           {/* Client Logos */}
@@ -68,6 +54,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.7 }}
+            className="w-full"
           >
             <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">Trusted by innovative companies</p>
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
@@ -88,7 +75,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.div 
-            className="grid grid-cols-3 md:grid-cols-3 gap-8 justify-center items-center mt-12 pt-8 border-t border-gray-100"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-8 justify-center items-center mt-12 pt-8 border-t border-gray-100"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.9 }}
