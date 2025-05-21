@@ -13,15 +13,17 @@ import { motion } from 'framer-motion';
 
 const YouTubeEmbed = ({ videoId }: { videoId: string }) => {
   return (
-    <AspectRatio ratio={9 / 16} className="overflow-hidden rounded-lg">
-      <iframe
-        src={`https://www.youtube.com/embed/${videoId}`}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        className="w-full h-full rounded-lg"
-        title="Client Testimonial"
-      />
-    </AspectRatio>
+    <div className="max-w-md mx-auto w-full">
+      <AspectRatio ratio={16 / 9} className="overflow-hidden rounded-lg">
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}`}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="w-full h-full rounded-lg"
+          title="Client Testimonial"
+        />
+      </AspectRatio>
+    </div>
   );
 };
 
@@ -67,7 +69,7 @@ const Testimonials = () => {
 
         {/* Main Testimonial Carousel */}
         <motion.div 
-          className="max-w-5xl mx-auto px-10"
+          className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
@@ -78,15 +80,15 @@ const Testimonials = () => {
               {testimonials.map((testimonial, index) => (
                 <CarouselItem key={index} className="md:basis-full">
                   <Card className="bg-white border-none shadow-sm hover:shadow-md transition-all duration-300">
-                    <CardContent className="p-6">
+                    <CardContent className="p-4 sm:p-6">
                       <YouTubeEmbed videoId={testimonial.videoId} />
                       <motion.div 
-                        className="mt-4"
+                        className="mt-4 text-center sm:text-left"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.3 }}
                       >
-                        <p className="text-gray-700 text-lg italic">
+                        <p className="text-gray-700 text-base sm:text-lg italic">
                           "{testimonial.quote}"
                         </p>
                         <div className="mt-3">
@@ -99,8 +101,8 @@ const Testimonials = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="lg:-left-12" />
-            <CarouselNext className="lg:-right-12" />
+            <CarouselPrevious className="hidden sm:flex lg:-left-12" />
+            <CarouselNext className="hidden sm:flex lg:-right-12" />
           </Carousel>
         </motion.div>
         
