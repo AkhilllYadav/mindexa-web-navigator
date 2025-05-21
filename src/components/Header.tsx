@@ -35,7 +35,7 @@ const Header = () => {
       // Active section tracking
       const sections = [
         'home', 'about', 'services', 'teams', 
-        'case-studies', 'testimonials', 'awards', 'contact'
+        'testimonials', 'awards', 'contact'
       ];
       
       // Find the current section
@@ -60,7 +60,6 @@ const Header = () => {
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Services' },
     { id: 'teams', label: 'Teams' },
-    { id: 'case-studies', label: 'Case Studies' },
     { id: 'testimonials', label: 'Testimonials' },
     { id: 'awards', label: 'Awards' },
     { id: 'contact', label: 'Contact' },
