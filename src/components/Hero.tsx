@@ -38,12 +38,12 @@ const Hero = () => {
               className="bg-mindexa-purple hover:bg-mindexa-indigo text-white px-8 py-6 group transition-all duration-300"
               onClick={() => window.open("https://tally.so/r/3xBQvr", "_blank")}
             >
-              Get Started
               <motion.span
-                className="inline-block"
+                className="inline-flex items-center"
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
+                Get Started
                 <ArrowRight className="ml-1" />
               </motion.span>
             </Button>
@@ -53,7 +53,13 @@ const Hero = () => {
               className="px-8 py-6 group hover:bg-gray-100 transition-colors"
               onClick={() => window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank")}
             >
-              <Play className="mr-1" /> Watch Demo
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="inline-flex items-center"
+              >
+                <Play className="mr-1" /> Watch Demo
+              </motion.span>
             </Button>
           </motion.div>
 
@@ -66,17 +72,17 @@ const Hero = () => {
             <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">Trusted by innovative companies</p>
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
               {['TechCrunch', 'YourStory', 'Forbes', 'StartupHub'].map((logo, index) => (
-                <motion.img 
+                <motion.div
                   key={logo}
-                  src={`https://via.placeholder.com/120x40?text=${logo}`}
-                  alt={logo}
-                  className="h-8 md:h-10 opacity-70 hover:opacity-100 transition-opacity"
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 0.7 }}
-                  transition={{ delay: 0.8 + index * 0.1 }}
-                />
+                >
+                  <img 
+                    src={`https://via.placeholder.com/120x40?text=${logo}`}
+                    alt={logo}
+                    className="h-8 md:h-10 opacity-70 hover:opacity-100 transition-opacity"
+                  />
+                </motion.div>
               ))}
             </div>
           </motion.div>

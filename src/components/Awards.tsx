@@ -6,25 +6,25 @@ import { motion } from 'framer-motion';
 const Awards = () => {
   const awards = [
     {
-      title: "Best AI Innovation",
+      title: "Best Enterprise AI Innovation",
       year: "2024",
       organization: "Tech Excellence Awards",
       icon: "🏆"
     },
     {
-      title: "Top ML Solution Provider",
+      title: "Top Enterprise ML Solution Provider",
       year: "2023",
       organization: "AI Business Journal",
       icon: "🥇"
     },
     {
-      title: "Emerging Tech Leader",
+      title: "Enterprise Tech Leader",
       year: "2023",
       organization: "Digital Transformation Forum",
       icon: "⭐"
     },
     {
-      title: "Best SaaS Platform",
+      title: "Best Enterprise SaaS Platform",
       year: "2022",
       organization: "Cloud Computing Awards",
       icon: "☁️"
@@ -44,7 +44,7 @@ const Awards = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-gray-50">
+    <section id="awards" className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
         <motion.div 
           className="text-center mb-12"
@@ -53,9 +53,18 @@ const Awards = () => {
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Awards & Recognition</h2>
+          <motion.span 
+            className="text-mindexa-purple font-semibold text-sm uppercase tracking-wider mb-2 inline-block"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Industry Recognition
+          </motion.span>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Enterprise Awards & Recognition</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            Our commitment to excellence and innovation has been recognized by leading industry organizations.
+            Our commitment to excellence and innovation has been recognized by leading industry organizations and enterprise partners.
           </p>
         </motion.div>
         
@@ -71,10 +80,10 @@ const Awards = () => {
               whileHover={{ y: -10 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <Card className="border-none shadow-md hover:shadow-lg transition-all h-full">
-                <CardContent className="p-6 flex flex-col items-center text-center">
+              <Card className="border-none shadow-md hover:shadow-lg transition-all h-full bg-white">
+                <CardContent className="p-6 flex flex-col items-center text-center h-full">
                   <motion.div 
-                    className="text-4xl mb-4"
+                    className="text-4xl mb-4 bg-gradient-to-r from-mindexa-blue to-mindexa-purple p-4 rounded-full"
                     whileHover={{ rotate: [0, -10, 10, -10, 10, 0], scale: 1.2 }}
                     transition={{ duration: 0.6 }}
                   >
