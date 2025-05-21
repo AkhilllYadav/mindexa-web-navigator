@@ -71,7 +71,7 @@ const Hero = () => {
           >
             <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">Trusted by innovative companies</p>
             <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-              {['TechCrunch', 'YourStory', 'Forbes', 'StartupHub'].map((logo, index) => (
+              {['FresherTalents.in', 'SalonifyPro', 'InflueAIty'].map((logo, index) => (
                 <motion.div
                   key={logo}
                   whileHover={{ scale: 1.05 }}
