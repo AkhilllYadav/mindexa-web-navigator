@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { ModeProvider } from '../contexts/ModeContext';
 import Header from '../components/Header';
 import ModeToggle from '../components/ModeToggle';
 import Hero from '../components/Hero';
@@ -14,22 +13,20 @@ import Footer from '../components/Footer';
 
 const Index = () => {
   return (
-    <ModeProvider>
-      <div className="min-h-screen flex flex-col w-full">
-        <Header />
-        <ModeToggle />
-        <main className="flex-1">
-          <Hero />
-          <About />
-          <Services />
-          <Stats />
-          <Testimonials />
-          <Awards />
-          <CallToAction />
-        </main>
-        <Footer />
-      </div>
-    </ModeProvider>
+    <div className="min-h-screen flex flex-col w-full">
+      <Header />
+      <ModeToggle />
+      <main className="flex-1">
+        <Hero />
+        <About />
+        <Services />
+        <Stats />
+        <Testimonials />
+        <Awards />
+        <CallToAction />
+      </main>
+      <Footer />
+    </div>
   );
 };
 

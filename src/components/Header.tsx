@@ -1,13 +1,15 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,6 +22,10 @@ const Header = () => {
       setIsMenuOpen(false);
       setActiveSection(sectionId);
     }
+  };
+
+  const goToUserSelection = () => {
+    navigate('/');
   };
 
   // Track the active section on scroll and header shadow
@@ -92,6 +98,17 @@ const Header = () => {
                 transition={{ type: "spring", stiffness: 400 }}
               />
             </a>
+            
+            {/* Back to Selection Button */}
+            <motion.button
+              onClick={goToUserSelection}
+              className="ml-4 p-2 text-gray-500 hover:text-mindexa-purple transition-colors hidden sm:flex items-center"
+              whileHover={{ x: -2 }}
+              title="Back to user selection"
+            >
+              <ArrowLeft className="h-4 w-4 mr-1" />
+              <span className="text-sm">Switch Mode</span>
+            </motion.button>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -173,6 +190,18 @@ const Header = () => {
               transition={{ duration: 0.3 }}
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
+                {/* Mobile Back to Selection */}
+                <motion.button
+                  onClick={goToUserSelection}
+                  className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-mindexa-purple hover:bg-gray-50 flex items-center"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  whileHover={{ x: 4 }}
+                >
+                  <ArrowLeft className="h-4 w-4 mr-2" />
+                  Switch Mode
+                </motion.button>
+                
                 {navLinks.map((link, index) => (
                   <motion.a 
                     key={link.id}
@@ -188,7 +217,7 @@ const Header = () => {
                     }`}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
+                    transition={{ delay: (index + 1) * 0.05 }}
                     whileHover={{ x: 4 }}
                   >
                     {link.label}
@@ -198,7 +227,7 @@ const Header = () => {
                   className="pt-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: navLinks.length * 0.05 }}
+                  transition={{ delay: (navLinks.length + 1) * 0.05 }}
                 >
                   <Button 
                     className="bg-gradient-to-r from-mindexa-blue to-mindexa-indigo text-white w-full"
