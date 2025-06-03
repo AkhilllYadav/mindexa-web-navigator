@@ -10,7 +10,7 @@ const ModeToggle = () => {
 
   return (
     <motion.div 
-      className="fixed top-4 right-4 z-50 bg-white/90 backdrop-blur-md rounded-full p-1 shadow-lg border"
+      className="fixed top-20 lg:top-4 right-4 z-40 bg-white/95 backdrop-blur-md rounded-full p-1 shadow-lg border"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
@@ -20,27 +20,27 @@ const ModeToggle = () => {
           variant={mode === 'creative' ? 'default' : 'ghost'}
           size="sm"
           onClick={() => setMode('creative')}
-          className={`rounded-full px-4 py-2 text-sm transition-all ${
+          className={`rounded-full px-2 sm:px-4 py-2 text-xs sm:text-sm transition-all ${
             mode === 'creative' 
               ? 'bg-mindexa-purple text-white' 
               : 'text-gray-600 hover:text-mindexa-purple'
           }`}
         >
-          <Palette className="h-4 w-4 mr-1" />
-          Creative
+          <Palette className="h-3 w-3 sm:h-4 sm:w-4 sm:mr-1" />
+          <span className="hidden sm:inline">Creative</span>
         </Button>
         <Button
           variant={mode === 'ai' ? 'default' : 'ghost'}
           size="sm"
           onClick={() => setMode('ai')}
-          className={`rounded-full px-4 py-2 text-sm transition-all ${
+          className={`rounded-full px-2 sm:px-4 py-2 text-xs sm:text-sm transition-all ${
             mode === 'ai' 
               ? 'bg-mindexa-blue text-white' 
               : 'text-gray-600 hover:text-mindexa-blue'
           }`}
         >
-          <Code className="h-4 w-4 mr-1" />
-          AI & Software
+          <Code className="h-3 w-3 sm:h-4 sm:w-4 sm:mr-1" />
+          <span className="hidden sm:inline">AI & Software</span>
         </Button>
       </div>
     </motion.div>

@@ -44,17 +44,17 @@ const Awards = () => {
   };
 
   return (
-    <section id="awards" className="py-16 md:py-24 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section id="awards" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
         >
           <motion.span 
-            className="text-mindexa-purple font-semibold text-sm uppercase tracking-wider mb-2 inline-block"
+            className="text-mindexa-purple font-semibold text-xs sm:text-sm uppercase tracking-wider mb-2 inline-block"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -62,13 +62,13 @@ const Awards = () => {
           >
             Industry Recognition
           </motion.span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Enterprise Awards & Recognition</h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4">Enterprise Awards & Recognition</h2>
+          <p className="text-base sm:text-lg text-gray-700 max-w-3xl mx-auto">
             Our commitment to excellence and innovation has been recognized by leading industry organizations and enterprise partners.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {awards.map((award, index) => (
             <motion.div
               key={index}
@@ -81,17 +81,17 @@ const Awards = () => {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <Card className="border-none shadow-md hover:shadow-lg transition-all h-full bg-white">
-                <CardContent className="p-6 flex flex-col items-center text-center h-full">
+                <CardContent className="p-4 sm:p-6 flex flex-col items-center text-center h-full">
                   <motion.div 
-                    className="text-4xl mb-4 bg-gradient-to-r from-mindexa-blue to-mindexa-purple p-4 rounded-full"
+                    className="text-3xl sm:text-4xl mb-3 sm:mb-4 bg-gradient-to-r from-mindexa-blue to-mindexa-purple p-3 sm:p-4 rounded-full"
                     whileHover={{ rotate: [0, -10, 10, -10, 10, 0], scale: 1.2 }}
                     transition={{ duration: 0.6 }}
                   >
                     {award.icon}
                   </motion.div>
-                  <h3 className="font-bold text-xl mb-2">{award.title}</h3>
-                  <p className="text-mindexa-purple font-semibold mb-1">{award.year}</p>
-                  <p className="text-gray-600 text-sm">{award.organization}</p>
+                  <h3 className="font-bold text-lg sm:text-xl mb-2">{award.title}</h3>
+                  <p className="text-mindexa-purple font-semibold mb-1 text-sm sm:text-base">{award.year}</p>
+                  <p className="text-gray-600 text-xs sm:text-sm">{award.organization}</p>
                 </CardContent>
               </Card>
             </motion.div>

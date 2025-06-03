@@ -28,12 +28,12 @@ const Hero = () => {
   const currentContent = content[mode];
 
   return (
-    <section id="home" className="bg-gradient-hero py-20 md:py-28">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
+    <section id="home" className="pt-16 lg:pt-20 bg-gradient-hero min-h-screen flex items-center">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center py-12 sm:py-16 lg:py-20">
           <motion.h1 
             key={mode}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
@@ -43,7 +43,7 @@ const Hero = () => {
           
           <motion.p 
             key={`${mode}-sub`}
-            className="text-lg md:text-xl text-gray-700 mb-8 max-w-2xl mx-auto"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}
@@ -52,14 +52,14 @@ const Hero = () => {
           </motion.p>
           
           <motion.div 
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-8 sm:mb-12"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
             <Button 
               size="lg" 
-              className={`bg-gradient-to-r ${currentContent.gradient} text-white px-8 py-6 group transition-all duration-300`}
+              className={`bg-gradient-to-r ${currentContent.gradient} text-white px-6 sm:px-8 py-3 sm:py-4 lg:py-6 text-sm sm:text-base group transition-all duration-300 w-full sm:w-auto`}
               onClick={currentContent.primaryAction}
             >
               <motion.span
@@ -68,14 +68,14 @@ const Hero = () => {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 {currentContent.primaryCta}
-                <ArrowRight className="ml-1" />
+                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
               </motion.span>
             </Button>
             
             <Button 
               variant="outline"
               size="lg" 
-              className="px-8 py-6 group hover:bg-gray-100 transition-colors"
+              className="px-6 sm:px-8 py-3 sm:py-4 lg:py-6 text-sm sm:text-base group hover:bg-gray-100 transition-colors w-full sm:w-auto"
               onClick={() => window.open("https://tally.so/r/3xBQvr", "_blank")}
             >
               <motion.span
@@ -95,19 +95,26 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.7 }}
             className="w-full"
           >
-            <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">Trusted by forward-thinking brands</p>
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-              {['FresherTalents.in', 'SalonifyPro', 'InflueAIty'].map((logo, index) => (
+            <p className="text-xs sm:text-sm text-gray-500 uppercase tracking-wider mb-4 sm:mb-6">
+              Trusted by forward-thinking brands
+            </p>
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-6 sm:gap-8 lg:gap-12">
+              {[
+                { name: 'FresherTalents.in', logo: 'FresherTalents' },
+                { name: 'SalonifyPro', logo: 'SalonifyPro' },
+                { name: 'InflueAIty', logo: 'InflueAIty' }
+              ].map((client, index) => (
                 <motion.div
-                  key={logo}
+                  key={client.name}
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                  className="flex items-center justify-center"
                 >
-                  <img 
-                    src={`https://via.placeholder.com/120x40?text=${logo}`}
-                    alt={logo}
-                    className="h-8 md:h-10 opacity-70 hover:opacity-100 transition-opacity"
-                  />
+                  <div className="bg-white/80 backdrop-blur-sm px-4 py-2 rounded-lg shadow-sm">
+                    <span className="text-gray-700 font-medium text-sm sm:text-base">
+                      {client.name}
+                    </span>
+                  </div>
                 </motion.div>
               ))}
             </div>

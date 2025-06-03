@@ -34,7 +34,7 @@ const Header = () => {
       
       // Active section tracking
       const sections = [
-        'home', 'about', 'services', 'teams', 
+        'home', 'about', 'services', 'stats', 
         'testimonials', 'awards', 'contact'
       ];
       
@@ -59,18 +59,19 @@ const Header = () => {
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'services', label: 'Services' },
-    { id: 'teams', label: 'Teams' },
+    { id: 'stats', label: 'Stats' },
     { id: 'testimonials', label: 'Testimonials' },
     { id: 'awards', label: 'Awards' },
     { id: 'contact', label: 'Contact' },
   ];
 
   return (
-    <header className={`sticky top-0 z-50 bg-white/90 backdrop-blur-md transition-all duration-300 ${scrolled ? 'shadow-md' : 'border-b border-gray-100'}`}>
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+    <header className={`fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md transition-all duration-300 ${scrolled ? 'shadow-lg' : 'border-b border-gray-100'}`}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 lg:h-20">
+          {/* Logo */}
           <motion.div 
-            className="flex items-center"
+            className="flex items-center flex-shrink-0"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -86,7 +87,7 @@ const Header = () => {
               <motion.img 
                 src="/lovable-uploads/e469623c-9926-493b-9978-9ff0be2be4c0.png" 
                 alt="Mindexa Logo" 
-                className="h-10 mr-2" 
+                className="h-8 sm:h-10 w-auto" 
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400 }}
               />
@@ -94,7 +95,7 @@ const Header = () => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navLinks.map((link, index) => (
               <motion.a 
                 key={link.id}
@@ -103,10 +104,10 @@ const Header = () => {
                   e.preventDefault(); 
                   scrollToSection(link.id); 
                 }} 
-                className={`text-gray-600 hover:text-gray-900 font-medium transition-colors relative ${
+                className={`text-sm font-medium transition-colors relative px-2 py-1 ${
                   activeSection === link.id 
-                    ? 'text-gray-900 after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-0.5 after:bg-mindexa-purple after:rounded-full' 
-                    : ''
+                    ? 'text-mindexa-purple after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-mindexa-purple after:rounded-full' 
+                    : 'text-gray-600 hover:text-mindexa-purple'
                 }`}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -118,18 +119,19 @@ const Header = () => {
             ))}
           </nav>
 
+          {/* Desktop CTA Button */}
           <motion.div 
-            className="hidden md:block"
+            className="hidden lg:block"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
           >
             <Button 
-              className="bg-gradient-to-r from-mindexa-blue to-mindexa-indigo text-white hover:shadow-md transition-all"
+              className="bg-gradient-to-r from-mindexa-blue to-mindexa-indigo text-white hover:shadow-lg transition-all px-6 py-2"
               onClick={() => window.open("https://tally.so/r/3xBQvr", "_blank")}
             >
               <motion.span
-                whileHover={{ x: 5 }}
+                whileHover={{ x: 2 }}
                 className="flex items-center"
               >
                 Contact Us
@@ -139,7 +141,7 @@ const Header = () => {
 
           {/* Mobile menu button */}
           <motion.div 
-            className="md:hidden"
+            className="lg:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -147,9 +149,9 @@ const Header = () => {
             <motion.button
               type="button"
               onClick={toggleMenu}
-              className="text-gray-600 hover:text-gray-900"
+              className="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-mindexa-purple"
               aria-label="Toggle menu"
-              whileTap={{ scale: 0.9 }}
+              whileTap={{ scale: 0.95 }}
             >
               {isMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -163,14 +165,14 @@ const Header = () => {
         {/* Mobile Navigation */}
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.nav 
-              className="mt-4 md:hidden"
+            <motion.div 
+              className="lg:hidden border-t border-gray-200"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="flex flex-col space-y-4 pb-4">
+              <div className="px-2 pt-2 pb-3 space-y-1">
                 {navLinks.map((link, index) => (
                   <motion.a 
                     key={link.id}
@@ -179,31 +181,37 @@ const Header = () => {
                       e.preventDefault(); 
                       scrollToSection(link.id); 
                     }} 
-                    className={`text-gray-600 hover:text-gray-900 font-medium ${
-                      activeSection === link.id ? 'text-gray-900 font-semibold' : ''
+                    className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      activeSection === link.id 
+                        ? 'text-mindexa-purple bg-purple-50 font-semibold' 
+                        : 'text-gray-600 hover:text-mindexa-purple hover:bg-gray-50'
                     }`}
-                    initial={{ opacity: 0, x: -10 }}
+                    initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    whileHover={{ x: 5 }}
+                    whileHover={{ x: 4 }}
                   >
                     {link.label}
                   </motion.a>
                 ))}
                 <motion.div
+                  className="pt-2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: navLinks.length * 0.05 }}
                 >
                   <Button 
                     className="bg-gradient-to-r from-mindexa-blue to-mindexa-indigo text-white w-full"
-                    onClick={() => window.open("https://tally.so/r/3xBQvr", "_blank")}
+                    onClick={() => {
+                      window.open("https://tally.so/r/3xBQvr", "_blank");
+                      setIsMenuOpen(false);
+                    }}
                   >
                     Contact Us
                   </Button>
                 </motion.div>
               </div>
-            </motion.nav>
+            </motion.div>
           )}
         </AnimatePresence>
       </div>
