@@ -1,8 +1,9 @@
 
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Briefcase, Brain, BarChart3, Code, RefreshCw, Cloud } from 'lucide-react';
+import { Briefcase, Brain, BarChart3, Code, RefreshCw, Cloud, Palette, Smartphone, Megaphone, Globe, Camera } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useMode } from '@/contexts/ModeContext';
 
 interface ServiceCardProps {
   title: string;
@@ -39,44 +40,76 @@ const ServiceCard = ({ title, description, icon, color, index }: ServiceCardProp
 };
 
 const Services = () => {
-  const services = [
+  const { mode } = useMode();
+
+  const creativeServices = [
+    {
+      title: "Branding & Identity Design",
+      description: "We create logos, brand systems, and visual identities that stand out.",
+      icon: <Palette className="h-8 w-8 text-purple-600" />,
+      color: "bg-purple-100"
+    },
+    {
+      title: "UI/UX Design for Web & Mobile",
+      description: "User-focused, beautiful interfaces that are intuitive and impactful.",
+      icon: <Smartphone className="h-8 w-8 text-blue-600" />,
+      color: "bg-blue-100"
+    },
+    {
+      title: "Creative Strategy & Campaigns",
+      description: "Messaging, visuals, and digital campaigns that resonate and convert.",
+      icon: <Megaphone className="h-8 w-8 text-pink-600" />,
+      color: "bg-pink-100"
+    },
+    {
+      title: "Website Design & Development",
+      description: "Fully responsive, visually rich websites with seamless performance.",
+      icon: <Globe className="h-8 w-8 text-green-600" />,
+      color: "bg-green-100"
+    },
+    {
+      title: "Content & Visual Production",
+      description: "Copywriting, motion graphics, animations, and video storytelling.",
+      icon: <Camera className="h-8 w-8 text-orange-600" />,
+      color: "bg-orange-100"
+    }
+  ];
+
+  const aiServices = [
     {
       title: "AI & Automation",
-      description: "Automate repetitive tasks and workflows with our intelligent automation solutions designed for enterprise scale.",
+      description: "Automate tasks and streamline workflows using intelligent automation.",
       icon: <Briefcase className="h-8 w-8 text-blue-600" />,
       color: "bg-blue-100"
     },
     {
       title: "AI/ML Development",
-      description: "Custom AI and machine learning models tailored to your specific business needs with enterprise-grade security.",
+      description: "Custom machine learning models tailored for real business challenges.",
       icon: <Brain className="h-8 w-8 text-purple-600" />,
       color: "bg-purple-100"
     },
     {
-      title: "Data Analytics",
-      description: "Transform your enterprise data into actionable insights with advanced analytics solutions and real-time dashboards.",
+      title: "Data Analytics & Dashboards",
+      description: "Real-time insights, predictive analytics, and performance tracking.",
       icon: <BarChart3 className="h-8 w-8 text-green-600" />,
       color: "bg-green-100"
     },
     {
-      title: "Custom Software",
-      description: "Bespoke enterprise software solutions designed to address your unique challenges with scalable architecture.",
+      title: "Custom Software Development",
+      description: "Scalable web and mobile applications for startups and enterprises.",
       icon: <Code className="h-8 w-8 text-yellow-600" />,
       color: "bg-yellow-100"
     },
     {
-      title: "AI Integration",
-      description: "Seamlessly integrate AI capabilities into your existing enterprise systems with minimal disruption to workflows.",
-      icon: <RefreshCw className="h-8 w-8 text-red-600" />,
-      color: "bg-red-100"
-    },
-    {
-      title: "SaaS Products",
-      description: "Enterprise-ready cloud-based software solutions that scale with your business needs and comply with industry standards.",
+      title: "Cloud Infrastructure & DevOps",
+      description: "Secure, scalable, and optimized deployment for modern businesses.",
       icon: <Cloud className="h-8 w-8 text-indigo-600" />,
       color: "bg-indigo-100"
     }
   ];
+
+  const services = mode === 'creative' ? creativeServices : aiServices;
+  const sectionTitle = mode === 'creative' ? 'Creative Services' : 'AI & Software Solutions';
 
   return (
     <section id="services" className="py-16 md:py-24 bg-white">
@@ -89,7 +122,10 @@ const Services = () => {
           viewport={{ once: true }}
         >
           <motion.span 
-            className="text-mindexa-purple font-semibold text-sm uppercase tracking-wider mb-2 inline-block"
+            key={mode}
+            className={`font-semibold text-sm uppercase tracking-wider mb-2 inline-block ${
+              mode === 'creative' ? 'text-mindexa-purple' : 'text-mindexa-blue'
+            }`}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -97,16 +133,19 @@ const Services = () => {
           >
             What We Offer
           </motion.span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Enterprise Solutions</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">{sectionTitle}</h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            We offer a comprehensive range of AI and technology services to help your enterprise innovate and grow in today's competitive landscape.
+            {mode === 'creative' 
+              ? 'We create visual experiences and brand strategies that captivate audiences and drive meaningful connections.'
+              : 'We offer cutting-edge AI and technology services to help your business innovate and scale in today\'s digital landscape.'
+            }
           </p>
         </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <ServiceCard
-              key={index}
+              key={`${mode}-${index}`}
               title={service.title}
               description={service.description}
               icon={service.icon}

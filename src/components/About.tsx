@@ -7,15 +7,15 @@ const About = () => {
   const values = [
     {
       title: "Innovation",
-      description: "We constantly push the boundaries of what's possible with AI and technology."
+      description: "We constantly push the boundaries of what's possible."
     },
     {
-      title: "Excellence",
-      description: "We're committed to delivering the highest quality solutions to our clients."
+      title: "Excellence", 
+      description: "We strive to deliver exceptional results every time."
     },
     {
       title: "Integrity",
-      description: "We operate with transparency and ethical principles in all our endeavors."
+      description: "Transparency and ethics are at the heart of what we do."
     }
   ];
 
@@ -46,14 +46,20 @@ const About = () => {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6">About Mindexa</h2>
             <p className="text-lg text-gray-700 mb-6">
-              Mindexa is a forward-thinking technology company specializing in AI-driven solutions that help businesses transform their operations.
-              We deliver innovative artificial intelligence and machine learning solutions that drive efficiency, 
-              insight, and growth for organizations of all sizes across multiple industries.
+              Mindexa is a multidisciplinary studio where artistry meets technology. Whether you're building a brand or a breakthrough product, we bring vision, innovation, and strategy to the table.
             </p>
-            <p className="text-lg text-gray-700 mb-8">
-              Our team of experts combines deep technical knowledge with strategic business acumen to develop
-              custom-tailored solutions that address your unique challenges and opportunities.
-            </p>
+            
+            <div className="mb-8">
+              <h3 className="text-xl font-bold text-mindexa-blue mb-3">Vision</h3>
+              <p className="text-gray-700 mb-4">
+                To empower businesses with design and technology that scales.
+              </p>
+              
+              <h3 className="text-xl font-bold text-mindexa-purple mb-3">Mission</h3>
+              <p className="text-gray-700 mb-6">
+                To merge creativity and intelligence in everything we build.
+              </p>
+            </div>
             
             <div className="flex items-center mb-6">
               <motion.div 
@@ -63,7 +69,7 @@ const About = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
               ></motion.div>
-              <p className="text-xl font-medium">Our Core Values</p>
+              <p className="text-xl font-medium">Core Values</p>
             </div>
             
             <motion.div 

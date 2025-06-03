@@ -1,30 +1,35 @@
 
 import React from 'react';
+import { ModeProvider } from '../contexts/ModeContext';
 import Header from '../components/Header';
+import ModeToggle from '../components/ModeToggle';
 import Hero from '../components/Hero';
 import About from '../components/About';
 import Services from '../components/Services';
-import Teams from '../components/Teams';
+import Stats from '../components/Stats';
 import Testimonials from '../components/Testimonials';
 import Awards from '../components/Awards';
-import Contact from '../components/Contact';
+import CallToAction from '../components/CallToAction';
 import Footer from '../components/Footer';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Services />
-        <Teams />
-        <Testimonials />
-        <Awards />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <ModeProvider>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <ModeToggle />
+        <main>
+          <Hero />
+          <About />
+          <Services />
+          <Stats />
+          <Testimonials />
+          <Awards />
+          <CallToAction />
+        </main>
+        <Footer />
+      </div>
+    </ModeProvider>
   );
 };
 
