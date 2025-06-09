@@ -74,34 +74,34 @@ const Header = () => {
 
   return (
     <>
-      {/* Contact Info Bar */}
-      <div className="bg-mindexa-purple text-white py-2 px-4">
-        <div className="container mx-auto">
-          <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between space-y-1 sm:space-y-0 text-sm">
-            <div className="flex items-center space-x-4">
+      {/* Contact Info Bar - Sticky */}
+      <div className="fixed top-0 left-0 right-0 z-50 bg-mindexa-purple text-white py-1.5 sm:py-2 px-2 sm:px-4">
+        <div className="container mx-auto max-w-7xl">
+          <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between space-y-1 sm:space-y-0 text-xs sm:text-sm">
+            <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-4">
               <div className="flex items-center">
-                <Phone className="h-3 w-3 mr-1" />
+                <Phone className="h-2.5 w-2.5 sm:h-3 sm:w-3 mr-1" />
                 <a href="tel:+918948890610" className="hover:text-gray-200 transition-colors">
                   +91 8948890610
                 </a>
               </div>
               <div className="flex items-center">
-                <MapPin className="h-3 w-3 mr-1" />
+                <MapPin className="h-2.5 w-2.5 sm:h-3 sm:w-3 mr-1" />
                 <span>Lucknow, UP, India</span>
               </div>
             </div>
             <div className="flex items-center">
-              <FileText className="h-3 w-3 mr-1" />
+              <FileText className="h-2.5 w-2.5 sm:h-3 sm:w-3 mr-1" />
               <span className="text-gray-200">GST: Coming Soon</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Main Header */}
-      <header className={`fixed top-8 left-0 right-0 z-50 bg-white/95 backdrop-blur-md transition-all duration-300 ${scrolled ? 'shadow-lg' : 'border-b border-gray-100'}`}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
+      {/* Main Header - Sticky with offset */}
+      <header className={`fixed top-6 sm:top-8 left-0 right-0 z-40 bg-white/95 backdrop-blur-md transition-all duration-300 ${scrolled ? 'shadow-lg' : 'border-b border-gray-100'}`}>
+        <div className="container mx-auto px-3 sm:px-4 lg:px-6 xl:px-8 max-w-7xl">
+          <div className="flex items-center justify-between h-14 sm:h-16 lg:h-20">
             {/* Logo */}
             <motion.div 
               className="flex items-center flex-shrink-0"
@@ -120,7 +120,7 @@ const Header = () => {
                 <motion.img 
                   src="/lovable-uploads/e469623c-9926-493b-9978-9ff0be2be4c0.png" 
                   alt="Mindexa Logo" 
-                  className="h-8 sm:h-10 w-auto" 
+                  className="h-6 sm:h-8 lg:h-10 w-auto" 
                   whileHover={{ scale: 1.05 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 />
@@ -129,17 +129,17 @@ const Header = () => {
               {/* Back to Selection Button */}
               <motion.button
                 onClick={goToUserSelection}
-                className="ml-4 p-2 text-gray-500 hover:text-mindexa-purple transition-colors hidden sm:flex items-center"
+                className="ml-2 sm:ml-4 p-1.5 sm:p-2 text-gray-500 hover:text-mindexa-purple transition-colors hidden sm:flex items-center"
                 whileHover={{ x: -2 }}
                 title="Back to user selection"
               >
-                <ArrowLeft className="h-4 w-4 mr-1" />
-                <span className="text-sm">Switch Mode</span>
+                <ArrowLeft className="h-3 w-3 sm:h-4 sm:w-4 mr-0.5 sm:mr-1" />
+                <span className="text-xs sm:text-sm">Switch Mode</span>
               </motion.button>
             </motion.div>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+            <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
               {navLinks.map((link, index) => (
                 <motion.a 
                   key={link.id}
@@ -171,7 +171,7 @@ const Header = () => {
               transition={{ duration: 0.5, delay: 0.5 }}
             >
               <Button 
-                className="bg-gradient-to-r from-mindexa-blue to-mindexa-indigo text-white hover:shadow-lg transition-all px-6 py-2"
+                className="bg-gradient-to-r from-mindexa-blue to-mindexa-indigo text-white hover:shadow-lg transition-all px-4 xl:px-6 py-2 text-sm"
                 onClick={() => window.open("https://tally.so/r/3xBQvr", "_blank")}
               >
                 <motion.span
@@ -198,9 +198,9 @@ const Header = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 {isMenuOpen ? (
-                  <X className="h-6 w-6" />
+                  <X className="h-5 w-5 sm:h-6 sm:w-6" />
                 ) : (
-                  <Menu className="h-6 w-6" />
+                  <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
                 )}
               </motion.button>
             </motion.div>
@@ -220,7 +220,7 @@ const Header = () => {
                   {/* Mobile Back to Selection */}
                   <motion.button
                     onClick={goToUserSelection}
-                    className="w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-mindexa-purple hover:bg-gray-50 flex items-center"
+                    className="w-full text-left px-3 py-2 rounded-md text-sm sm:text-base font-medium text-gray-600 hover:text-mindexa-purple hover:bg-gray-50 flex items-center"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     whileHover={{ x: 4 }}
@@ -237,7 +237,7 @@ const Header = () => {
                         e.preventDefault(); 
                         scrollToSection(link.id); 
                       }} 
-                      className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                      className={`block px-3 py-2 rounded-md text-sm sm:text-base font-medium transition-colors ${
                         activeSection === link.id 
                           ? 'text-mindexa-purple bg-purple-50 font-semibold' 
                           : 'text-gray-600 hover:text-mindexa-purple hover:bg-gray-50'
@@ -257,7 +257,7 @@ const Header = () => {
                     transition={{ delay: (navLinks.length + 1) * 0.05 }}
                   >
                     <Button 
-                      className="bg-gradient-to-r from-mindexa-blue to-mindexa-indigo text-white w-full"
+                      className="bg-gradient-to-r from-mindexa-blue to-mindexa-indigo text-white w-full text-sm"
                       onClick={() => {
                         window.open("https://tally.so/r/3xBQvr", "_blank");
                         setIsMenuOpen(false);

@@ -10,7 +10,7 @@ const ModeToggle = () => {
 
   return (
     <motion.div 
-      className="fixed top-20 lg:top-4 right-4 z-40 bg-white/95 backdrop-blur-md rounded-full p-1 shadow-lg border"
+      className="fixed top-20 sm:top-24 lg:top-28 right-2 sm:right-4 z-40 bg-white/95 backdrop-blur-md rounded-full p-1 shadow-lg border"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
@@ -20,7 +20,7 @@ const ModeToggle = () => {
           variant={mode === 'creative' ? 'default' : 'ghost'}
           size="sm"
           onClick={() => setMode('creative')}
-          className={`rounded-full px-2 sm:px-4 py-2 text-xs sm:text-sm transition-all ${
+          className={`rounded-full px-2 sm:px-3 lg:px-4 py-1.5 sm:py-2 text-xs sm:text-sm transition-all ${
             mode === 'creative' 
               ? 'bg-mindexa-purple text-white' 
               : 'text-gray-600 hover:text-mindexa-purple'
@@ -33,7 +33,7 @@ const ModeToggle = () => {
           variant={mode === 'ai' ? 'default' : 'ghost'}
           size="sm"
           onClick={() => setMode('ai')}
-          className={`rounded-full px-2 sm:px-4 py-2 text-xs sm:text-sm transition-all ${
+          className={`rounded-full px-2 sm:px-3 lg:px-4 py-1.5 sm:py-2 text-xs sm:text-sm transition-all ${
             mode === 'ai' 
               ? 'bg-mindexa-blue text-white' 
               : 'text-gray-600 hover:text-mindexa-blue'
