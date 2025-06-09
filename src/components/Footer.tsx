@@ -1,18 +1,19 @@
 
 import React from 'react';
+import { Phone, MapPin, FileText } from 'lucide-react';
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 py-12 border-t border-gray-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-12">
           <div>
             <h3 className="text-white font-bold mb-4">Company</h3>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Teams</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+              <li><a href="#about" className="hover:text-white transition-colors">About</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors">Services</a></li>
+              <li><a href="#testimonials" className="hover:text-white transition-colors">Testimonials</a></li>
+              <li><a href="#contact" className="hover:text-white transition-colors">Contact</a></li>
             </ul>
           </div>
           <div>
@@ -34,13 +35,23 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <h3 className="text-white font-bold mb-4">Legal</h3>
-            <ul className="space-y-2">
-              <li><a href="#" className="hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Cookie Policy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">GDPR</a></li>
-            </ul>
+            <h3 className="text-white font-bold mb-4">Contact Info</h3>
+            <div className="space-y-3">
+              <div className="flex items-center">
+                <Phone className="h-4 w-4 mr-2 text-mindexa-purple" />
+                <a href="tel:+918948890610" className="hover:text-white transition-colors">
+                  +91 8948890610
+                </a>
+              </div>
+              <div className="flex items-center">
+                <MapPin className="h-4 w-4 mr-2 text-mindexa-purple" />
+                <span>Lucknow, UP, India</span>
+              </div>
+              <div className="flex items-center">
+                <FileText className="h-4 w-4 mr-2 text-mindexa-purple" />
+                <span className="text-gray-400">GST: Coming Soon</span>
+              </div>
+            </div>
           </div>
         </div>
         <div className="py-6 border-t border-gray-800 text-sm">
