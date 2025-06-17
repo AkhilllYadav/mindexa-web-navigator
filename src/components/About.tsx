@@ -101,7 +101,7 @@ const About = () => {
           >
             <div className="aspect-square bg-gray-200 rounded-lg overflow-hidden">
               <img 
-                src="https://media.istockphoto.com/id/1460755337/photo/white-color-theme-modern-style-office-with-exposed-concrete-floor-and-a-lot-of-plant-3d.jpg?s=612x612&w=0&k=20&c=PX1TFWVrLL34jgkmFREmxrzy3M4rqhBk4NMrHFOTmo8=" 
+                src="https://a.storyblok.com/f/99519/1100x620/0aa998eef4/blog-hero-image-3.png/m/2160x1218/filters:format(png)" 
                 alt="Mindexa Team" 
                 className="w-full h-full object-cover"
               />
