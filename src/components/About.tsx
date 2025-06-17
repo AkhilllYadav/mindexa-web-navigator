@@ -101,7 +101,7 @@ const About = () => {
           >
             <div className="aspect-square bg-gray-200 rounded-lg overflow-hidden">
               <img 
-                src="/placeholder.svg" 
+                src="https://media.istockphoto.com/id/1460755337/photo/white-color-theme-modern-style-office-with-exposed-concrete-floor-and-a-lot-of-plant-3d.jpg?s=612x612&w=0&k=20&c=PX1TFWVrLL34jgkmFREmxrzy3M4rqhBk4NMrHFOTmo8=" 
                 alt="Mindexa Team" 
                 className="w-full h-full object-cover"
               />
